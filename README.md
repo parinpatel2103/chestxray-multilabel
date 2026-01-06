@@ -111,19 +111,25 @@ All experiments were run under realistic hardware limits (CPU-only or limited GP
 
 ---
 
-## 📊 Results Snapshot (High-Level)
+📊 Results Snapshot (High-Level)
 
 Because of dataset noise and imbalance, emphasis was placed on macro-level metrics and per-class behavior rather than raw accuracy.
 
 General trends:
-- AUC can appear strong even when decision thresholds perform poorly
-- F1 score is the most challenging metric for rare diseases
-- EfficientNet and DenseNet showed stable performance across classes
-- Lightweight models remained competitive given their size
+
+- AUC can appear strong even when decision thresholds perform poorly  
+- F1 score is the most challenging metric for rare diseases  
+- EfficientNet and DenseNet showed stable performance across classes  
+- Lightweight models remained competitive given their size  
 
 Typical tuned performance ranges:
+
 - Macro AUC: ~0.78–0.81  
 - Macro F1: ~0.20–0.30  
+
+⭐ Additional Notes on My Implementation:
+- Due to CPU-only training and reduced subset size, my reproduced EfficientNet-B0 run reached **Macro AUC ≈ 0.73** and **Macro F1 ≈ 0.19**, which is consistent with expected behavior under limited compute. Published full-dataset baselines for EfficientNet-B0 typically report **Macro AUC around 0.78–0.81**.
+ 
 
 ---
 
