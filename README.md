@@ -90,6 +90,25 @@ Observed patterns:
 - Some false positives attend to ribs, heart borders, or diaphragm
 - Multi-label cases may emphasize one abnormality while missing another
 
+### 🧪 Practical Training Choices
+
+Training on a large medical imaging dataset involves tradeoffs between runtime, experimentation speed, and model behavior. To keep the project practical while still meaningful, a few choices were made during training.
+
+**Using subsets during development**  
+Although ChestX-ray14 contains over 112,000 images, many experiments were run on smaller random subsets (typically 5k–10k images). This made it much faster to iterate on data loading, loss functions, and threshold tuning. Subsets were sampled from the full dataset so the original class imbalance was preserved.
+
+**Epoch selection**  
+Different models converged at different speeds:
+
+- **EfficientNet-B0** was trained for **8 epochs**, since validation performance stabilized early.
+- Other architectures (e.g., DenseNet-121, ResNet variants) were tested for **12–14 epochs** in supporting experiments to see whether longer training improved rare disease recall.
+
+The goal was to stop training once validation behavior stabilized rather than overfitting to training loss.
+
+**Compute constraints**  
+All experiments were run under realistic hardware limits (CPU-only or limited GPU access). Training parameters such as subset size, batch size, and number of epochs were chosen to reflect what is feasible in an academic setting while still allowing fair model comparisons.
+
+
 ---
 
 ## 📊 Results Snapshot (High-Level)
