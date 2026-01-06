@@ -60,10 +60,10 @@ The primary implemented pipeline in this repository focuses on **EfficientNet-B0
 - Multi-label structure with overlapping conditions
 
 ### Preprocessing steps
-- Convert disease strings into multi-hot label vectors
-- Resize images to 224×224
-- Normalize using ImageNet statistics for transfer learning
-- Train/validation split with patient-level separation when available
+- Convert disease strings into multi-hot label vectors  
+- Resize images to 224×224  
+- Convert images to PyTorch tensors  
+- Random train/validation split (80/20)
 
 ---
 
