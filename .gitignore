@@ -1,0 +1,29 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Virtual environments
+.venv/
+venv/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Data
+data/
+*.csv
+*.zip
+
+# Outputs
+results/gradcam/*
+results/tables/*
+!results/tables/metrics.txt
+
+
+# OS
+.DS_Store
+
+# Model weights
+*.pth

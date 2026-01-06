@@ -1,0 +1,19 @@
+Per-class results (AUC, F1, threshold)
+-----------------------------------
+Atelectasis        AUC=0.759  F1=0.334  thr=0.15
+Cardiomegaly       AUC=0.767  F1=0.146  thr=0.10
+Consolidation      AUC=0.753  F1=0.177  thr=0.10
+Edema              AUC=0.859  F1=0.187  thr=0.10
+Effusion           AUC=0.831  F1=0.451  thr=0.20
+Emphysema          AUC=0.755  F1=0.146  thr=0.05
+Fibrosis           AUC=0.697  F1=0.019  thr=0.05
+Infiltration       AUC=0.681  F1=0.378  thr=0.20
+Mass               AUC=0.725  F1=0.212  thr=0.10
+Nodule             AUC=0.651  F1=0.160  thr=0.05
+Pleural_Thickening AUC=0.677  F1=0.122  thr=0.05
+Pneumonia          AUC=0.648  F1=0.068  thr=0.05
+Pneumothorax       AUC=0.783  F1=0.244  thr=0.10
+Hernia             AUC=0.646  F1=0.000  thr=0.50
+
+Macro AUC: 0.731
+Macro F1 : 0.189
