@@ -129,39 +129,40 @@ Typical tuned performance ranges:
 
 ⭐ Additional Notes on My Implementation:
 - Due to CPU-only training and reduced subset size, my reproduced EfficientNet-B0 run reached **Macro AUC ≈ 0.73** and **Macro F1 ≈ 0.19**, which is consistent with expected behavior under limited compute. Published full-dataset baselines for EfficientNet-B0 typically report **Macro AUC around 0.78–0.81**.
- 
-
+- 
 ▶️ Running the Project
 
-The dataset is not included in this repository. You must download the NIH ChestX-ray14 dataset separately.
+Note:
+The NIH ChestX-ray14 dataset is not included in this repository.
+You’ll need to download it separately (for example through KaggleHub or the official NIH website).
 
-Setup
+Once you have the dataset, make sure your folder looks like this:
+
+/path/to/chestxray14/
+    Data_Entry_2017.csv
+    images_001/
+        images/
+            00000001_000.png
+            00000002_001.png
+            ...
+    images_002/
+        images/
+    images_003/
+        images/
+    ...
+
+1. Create your environment
 python3 -m venv .venv
 source .venv/bin/activate
 pip install -r requirements.txt
 
-Dataset Structure
+2. Train the model
 
-Your dataset folder should look like:
+Replace the paths with your dataset location:
 
-DATA_ROOT/
-  Data_Entry_2017.csv
-  images_001/images/*.png
-  images_002/images/*.png
-  images_003/images/*.png
-  ...
-
-
-You will pass:
-
---csv_path → path to Data_Entry_2017.csv
-
---img_root → path to the folder containing images_001/, images_002/, etc.
-
-Train the Model (subset for speed)
 PYTHONPATH=. python scripts/train.py \
-  --csv_path "/path/to/Data_Entry_2017.csv" \
-  --img_root "/path/to/DATA_ROOT" \
+  --csv_path "/path/to/chestxray14/Data_Entry_2017.csv" \
+  --img_root "/path/to/chestxray14" \
   --epochs 8 \
   --batch_size 32 \
   --lr 1e-4 \
@@ -169,31 +170,31 @@ PYTHONPATH=. python scripts/train.py \
   --val_subset 2000
 
 
-This will save:
+This will train EfficientNet-B0 and produce two saved weights:
 
 model_best.pth
 model_last.pth
 
-Evaluate the Model
+3. Evaluate the model
 PYTHONPATH=. python scripts/eval.py \
-  --csv_path "/path/to/Data_Entry_2017.csv" \
-  --img_root "/path/to/DATA_ROOT" \
+  --csv_path "/path/to/chestxray14/Data_Entry_2017.csv" \
+  --img_root "/path/to/chestxray14" \
   --weights model_best.pth \
-  --subset 10000
+  --subset 2000
 
 
-Metrics will be saved to:
+This will output macro-level scores and save a results file here:
 
 results/tables/metrics.txt
 
-Generate Grad-CAM Visualizations
+4. Generate Grad-CAM visualizations
 PYTHONPATH=. python scripts/gradcam.py \
-  --csv_path "/path/to/Data_Entry_2017.csv" \
-  --img_root "/path/to/DATA_ROOT" \
+  --csv_path "/path/to/chestxray14/Data_Entry_2017.csv" \
+  --img_root "/path/to/chestxray14" \
   --weights model_best.pth \
   --samples 8
 
 
-Outputs will be written to:
+Images will appear in:
 
 results/gradcam/
