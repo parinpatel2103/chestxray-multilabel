@@ -131,14 +131,69 @@ Typical tuned performance ranges:
 - Due to CPU-only training and reduced subset size, my reproduced EfficientNet-B0 run reached **Macro AUC ≈ 0.73** and **Macro F1 ≈ 0.19**, which is consistent with expected behavior under limited compute. Published full-dataset baselines for EfficientNet-B0 typically report **Macro AUC around 0.78–0.81**.
  
 
----
+▶️ Running the Project
 
-## ▶️ Running the Project
+The dataset is not included in this repository. You must download the NIH ChestX-ray14 dataset separately.
 
-The dataset is not included in this repository.
-
-### Setup
-```bash
+Setup
 python3 -m venv .venv
 source .venv/bin/activate
 pip install -r requirements.txt
+
+Dataset Structure
+
+Your dataset folder should look like:
+
+DATA_ROOT/
+  Data_Entry_2017.csv
+  images_001/images/*.png
+  images_002/images/*.png
+  images_003/images/*.png
+  ...
+
+
+You will pass:
+
+--csv_path → path to Data_Entry_2017.csv
+
+--img_root → path to the folder containing images_001/, images_002/, etc.
+
+Train the Model (subset for speed)
+PYTHONPATH=. python scripts/train.py \
+  --csv_path "/path/to/Data_Entry_2017.csv" \
+  --img_root "/path/to/DATA_ROOT" \
+  --epochs 8 \
+  --batch_size 32 \
+  --lr 1e-4 \
+  --train_subset 10000 \
+  --val_subset 2000
+
+
+This will save:
+
+model_best.pth
+model_last.pth
+
+Evaluate the Model
+PYTHONPATH=. python scripts/eval.py \
+  --csv_path "/path/to/Data_Entry_2017.csv" \
+  --img_root "/path/to/DATA_ROOT" \
+  --weights model_best.pth \
+  --subset 10000
+
+
+Metrics will be saved to:
+
+results/tables/metrics.txt
+
+Generate Grad-CAM Visualizations
+PYTHONPATH=. python scripts/gradcam.py \
+  --csv_path "/path/to/Data_Entry_2017.csv" \
+  --img_root "/path/to/DATA_ROOT" \
+  --weights model_best.pth \
+  --samples 8
+
+
+Outputs will be written to:
+
+results/gradcam/
