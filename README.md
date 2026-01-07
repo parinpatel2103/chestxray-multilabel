@@ -134,33 +134,33 @@ These match expected values under limited compute.
 > **Important:** The dataset is NOT included.  
 > Download via KaggleHub or NIH first.
 
-### Folder structure (required)
+### 📁 Folder structure (required)
 
+```
 /path/to/chestxray14/
-Data_Entry_2017.csv
-images_001/
-images/
-00000001_000.png
-00000002_001.png
-images_002/
-images/
-images_003/
-images/
+    Data_Entry_2017.csv
+    images_001/
+        images/
+            00000001_000.png
+            00000002_001.png
+    images_002/
+        images/
+    images_003/
+        images/
+```
 
-yaml
-Copy code
+### 
 
----
+1️⃣ Create your environment
 
-### 1️⃣ Create your environment
-
-```bash
+```
 python3 -m venv .venv
 source .venv/bin/activate
 pip install -r requirements.txt
+```
 2️⃣ Train the model
-bash
-Copy code
+
+```
 PYTHONPATH=. python scripts/train.py \
   --csv_path "/path/to/chestxray14/Data_Entry_2017.csv" \
   --img_root "/path/to/chestxray14" \
@@ -169,34 +169,29 @@ PYTHONPATH=. python scripts/train.py \
   --lr 1e-4 \
   --train_subset 10000 \
   --val_subset 2000
+```
 This produces:
-
-Copy code
 model_best.pth
 model_last.pth
+
 3️⃣ Evaluate the model
-bash
-Copy code
+```
 PYTHONPATH=. python scripts/eval.py \
   --csv_path "/path/to/chestxray14/Data_Entry_2017.csv" \
   --img_root "/path/to/chestxray14" \
   --weights model_best.pth \
   --subset 2000
+```
 Metrics saved to:
-
-bash
-Copy code
 results/tables/metrics.txt
+
 4️⃣ Generate Grad-CAM visualizations
-bash
-Copy code
+```
 PYTHONPATH=. python scripts/gradcam.py \
   --csv_path "/path/to/chestxray14/Data_Entry_2017.csv" \
   --img_root "/path/to/chestxray14" \
   --weights model_best.pth \
   --samples 8
+```
 Images saved to:
-
-bash
-Copy code
 results/gradcam/
