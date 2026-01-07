@@ -13,7 +13,7 @@ This project explores whether deep learning models can assist by predicting thor
 
 ---
 
-## 🎯 Task Description
+##  Task Description
 
 Given a chest X-ray image, the model outputs a probability for each disease label. Because multiple diseases can appear in a single scan, this is a **multi-label classification** problem (sigmoid outputs rather than softmax).
 
@@ -24,7 +24,7 @@ Infiltration, Mass, Nodule, Pleural Thickening, Pneumonia, Pneumothorax, Hernia
 
 ---
 
-## 🧠 Models Explored
+##  Models Explored
 
 Several architectures were explored throughout the project to understand tradeoffs between performance, stability, and complexity under imbalance:
 
@@ -39,7 +39,7 @@ The primary implemented pipeline in this repository focuses on **EfficientNet-B0
 
 ---
 
-## 🧰 Tech Stack
+##  Tech Stack
 
 - Python  
 - PyTorch / Torchvision  
@@ -49,7 +49,7 @@ The primary implemented pipeline in this repository focuses on **EfficientNet-B0
 
 ---
 
-## 🗂 Dataset & Preprocessing
+## Dataset & Preprocessing
 
 **Dataset:** NIH ChestX-ray14  
 112,120 frontal chest X-rays with up to 14 disease labels per image.
@@ -67,7 +67,7 @@ The primary implemented pipeline in this repository focuses on **EfficientNet-B0
 
 ---
 
-## 🔥 Training Considerations
+## Training Considerations
 
 ### Handling Class Imbalance
 Mitigation strategies:
@@ -91,7 +91,7 @@ Observed patterns:
 
 ---
 
-## 🧪 Practical Training Choices
+## Practical Training Choices
 
 ### Using subsets during development
 To keep training manageable without a GPU, subsets (5k–10k images) were used for rapid experimentation.
@@ -134,7 +134,7 @@ These match expected values under limited compute.
 > **Important:** The dataset is NOT included.  
 > Download via KaggleHub or NIH first.
 
-### 📁 Folder structure (required)
+### Folder structure (required)
 
 ```
 /path/to/chestxray14/
