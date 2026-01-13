@@ -1,5 +1,4 @@
 # 🫁 ChestX-ray14 Multi-Label Classification  
-### ECE 460J Final Project
 
 Multi-label chest X-ray disease classification using deep learning and transfer learning, with a focus on class imbalance, threshold tuning, and interpretability.
 
