@@ -1,10 +1,10 @@
-# 🫁 ChestX-ray14 Multi-Label Classification  
+#  ChestX-ray14 Multi-Label Classification  
 
 Multi-label chest X-ray disease classification using deep learning and transfer learning, with a focus on class imbalance, threshold tuning, and interpretability.
 
 ---
 
-## 📌 Overview
+## Overview
 
 Chest X-rays are one of the most common medical imaging exams, but interpreting them accurately requires experience and careful attention to subtle visual cues. In real clinical settings, radiologists must process large volumes of scans, which can lead to heavy workload, missed findings, and delayed diagnoses.
 
@@ -105,7 +105,7 @@ Batch sizes + subset sizes adjusted accordingly.
 
 ---
 
-## 📊 Results Snapshot
+##  Results Snapshot
 
 General behavior of multi-label CXR models:
 
@@ -128,7 +128,7 @@ These match expected values under limited compute.
 
 ---
 
-## ▶️ Running the Project
+##  Running the Project
 
 > **Important:** The dataset is NOT included.  
 > Download via KaggleHub or NIH first.
@@ -150,14 +150,14 @@ These match expected values under limited compute.
 
 ### 
 
-1️⃣ Create your environment
+1️ Create your environment
 
 ```
 python3 -m venv .venv
 source .venv/bin/activate
 pip install -r requirements.txt
 ```
-2️⃣ Train the model
+2️ Train the model
 
 ```
 PYTHONPATH=. python scripts/train.py \
@@ -173,7 +173,7 @@ This produces:
 model_best.pth
 model_last.pth
 
-3️⃣ Evaluate the model
+3️ Evaluate the model
 ```
 PYTHONPATH=. python scripts/eval.py \
   --csv_path "/path/to/chestxray14/Data_Entry_2017.csv" \
@@ -184,7 +184,7 @@ PYTHONPATH=. python scripts/eval.py \
 Metrics saved to:
 results/tables/metrics.txt
 
-4️⃣ Generate Grad-CAM visualizations
+4️ Generate Grad-CAM visualizations
 ```
 PYTHONPATH=. python scripts/gradcam.py \
   --csv_path "/path/to/chestxray14/Data_Entry_2017.csv" \
